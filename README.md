@@ -124,30 +124,3 @@ public class Main {
     }
 }
 
-
-
-Пример вывода:
-
-Books in Library:
-Book{title='Harry Potter and the Philosopher's Stone', author=J.K. Rowling}
-Book{title='The Hobbit', author=J.R.R. Tolkien}
-Book{title='1984', author=George Orwell}
-Book{title='The Lord of the Rings', author=J.R.R. Tolkien}
-Book{title='Animal Farm', author=George Orwell}
-
-Unique Authors:
-Author{name='J.K. Rowling'}
-Author{name='J.R.R. Tolkien'}
-Author{name='George Orwell'}
-
-Books in genre Fantasy:
-Book{title='Harry Potter and the Philosopher's Stone', author=J.K. Rowling}
-Book{title='The Hobbit', author=J.R.R. Tolkien}
-Book{title='The Lord of the Rings', author=J.R.R. Tolkien}
-
-Books in genre Dystopian:
-Book{title='1984', author=George Orwell}
-Book{title='Animal Farm', author=George Orwell}
-
-Books in genre Science Fiction:
-
