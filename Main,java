@@ -1,0 +1,94 @@
+import java.util.*;
+
+public class Book {
+    private String title;
+    private Author author;
+
+    public Book(String title, Author author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" + "title='" + title + '\'' + ", author=" + author.getName() + '}';
+    }
+}
+
+public class Author {
+    private String name;
+
+    public Author(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" + "name='" + name + '\'' + '}';
+    }
+}
+
+public class Library {
+    private List<Book> books;
+    private Set<Author> authors;
+    private Map<String, List<Book>> booksByGenre;
+
+    public Library() {
+        books = new ArrayList<>();
+        authors = new HashSet<>();
+        booksByGenre = new HashMap<>();
+    }
+
+    public void addBook(String title, Author author, String genre) {
+        Book book = new Book(title, author);
+        books.add(book);
+        authors.add(author);
+        booksByGenre.putIfAbsent(genre, new ArrayList<>());
+        booksByGenre.get(genre).add(book);
+    }
+
+    public void displayBooks() {
+        books.forEach(System.out::println);
+    }
+
+    public void displayAuthors() {
+        authors.forEach(System.out::println);
+    }
+
+    public void displayBooksByGenre(String genre) {
+        booksByGenre.getOrDefault(genre, Collections.emptyList()).forEach(System.out::println);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Library library = new Library();
+        Author author1 = new Author("J.K. Rowling");
+        Author author2 = new Author("J.R.R. Tolkien");
+        Author author3 = new Author("George Orwell");
+
+        library.addBook("Harry Potter and the Philosopher's Stone", author1, "Fantasy");
+        library.addBook("The Hobbit", author2, "Fantasy");
+        library.addBook("1984", author3, "Dystopian");
+        library.addBook("The Lord of the Rings", author2, "Fantasy");
+        library.addBook("Animal Farm", author3, "Dystopian");
+
+        library.displayBooks();
+        library.displayAuthors();
+        library.displayBooksByGenre("Fantasy");
+        library.displayBooksByGenre("Dystopian");
+        library.displayBooksByGenre("Science Fiction");
+    }
+}
